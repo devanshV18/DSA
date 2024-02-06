@@ -11,9 +11,9 @@ using namespace std;
 
     //Recursive relation
 
-    sayDigits(n,arr);
+    sayDigits(n,arr); //picks until leftmost digit
 
-    cout<<arr[digit]<<" ";
+    cout<<arr[digit]<<" "; //start printing from lrftmost position, backtracking
 
  }
 
