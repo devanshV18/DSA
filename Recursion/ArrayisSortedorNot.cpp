@@ -17,10 +17,9 @@ bool isSorted(int arr[] , int size){
 
 
 int main(){
-    int test[] = {1,2,3,4,5,6,7,4};
+    int test[] = {1,2,3,4,5,6,7,8,9};
     int tsize = sizeof(test)/sizeof(test[0]);  //length calculation
 
     bool res = isSorted(test,tsize);
-    cout<<res<<endl;
 
 }
