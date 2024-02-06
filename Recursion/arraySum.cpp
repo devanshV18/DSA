@@ -11,7 +11,7 @@ int arraySum(int arr[],int size){
     } 
 
     int remArray = arraySum(arr+1,size-1);
-    int sum = arr[0] +remArray;
+    int sum = arr[0] + remArray;
     return sum;
 }
 
