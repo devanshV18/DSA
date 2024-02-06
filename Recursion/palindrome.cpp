@@ -22,4 +22,5 @@ int main(){
     string str = "racecar";
     int res = checkPalindrome(str, 0, str.length()-1);
     cout<<res<<endl;
+    cout<<"yo"<<endl;
 }
