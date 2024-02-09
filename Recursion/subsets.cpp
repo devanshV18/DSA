@@ -41,6 +41,6 @@ int main(){
     
     vector<vector<int>> anst = subsets(numst);
     for(int j=0;j<anst.size();j++){
-        cout<<anst[j]<<" ";
+        // cout<<anst[j]<<" ";
     }
  }
