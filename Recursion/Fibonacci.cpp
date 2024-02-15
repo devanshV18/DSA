@@ -5,8 +5,8 @@ int printFib(int n){
     if(n==0) return 0;
     if(n==1) return 1;
 
-    int nterm = printFib(n-1) + printFib(n-2);
-    return nterm;
+    int term = printFib(n-1) + printFib(n-2);
+    return term;
 
 }
 
