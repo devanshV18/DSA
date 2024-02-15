@@ -4,9 +4,9 @@ using namespace std;
 int fac(int n){
     if(n==0) return 1;  //base case
 
-    int smallprob = fac(n-1);
-    int bigprob = n * smallprob;
-    return bigprob;
+    int small = fac(n-1);
+    int big = n * small;
+    return big;
 }
 
 
