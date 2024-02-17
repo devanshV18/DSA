@@ -54,9 +54,9 @@ int diameter(node* root){
         return 0;
     }
 
-    int A = diameter(root->left);
-    int B = diameter(root->right);
-    int C = height(root->left) + height(root->right) + 1;
+    int A = diameter(root -> left);
+    int B = diameter(root -> right);
+    int C = height(root -> left) + height(root -> right) + 1;
 
     int ans = max(A,B,C);
     return ans;
