@@ -34,16 +34,16 @@ node* buildTree(node* root) {
 
 }
 
-void inorder(node* root){
-    //base case
-    if(root == NULL){
-        return;
-    }
+// void inorder(node* root){
+//     //base case
+//     if(root == NULL){
+//         return;
+//     }
 
-    inorder(root -> left);
-    cout << root -> data << endl;
-    inorder(root -> right);
-}
+//     inorder(root -> left);
+//     cout << root -> data << endl;
+//     inorder(root -> right);
+// }
 
 void inorderForLeafs(node* root, int &count){
     //base case
