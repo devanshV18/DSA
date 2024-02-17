@@ -60,7 +60,7 @@ void levelordertraversal(node* root){
             }
 
             if(temp->right){
-                q.push(temp->right);
+                q.push(temp ->r ight);
             }
         }
     }
