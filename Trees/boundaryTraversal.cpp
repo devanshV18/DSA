@@ -64,6 +64,16 @@ void addRightBoundary(node* root,vector<int> &res){
     }
 }
 
+void addLeaves(node* root, vector<int> &res){
+    if(isLeaf(root)){
+        res.push_back(root->data);
+        return;
+    }
+    if(root->left) addLeaves(root->left, res);
+    if(root->right) addLeaves(root->right, res);
+
+}
+
 
 
 
