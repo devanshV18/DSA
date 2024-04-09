@@ -53,3 +53,18 @@ class Stack {
     }
 };
 
+int main(){
+    Stack st(5);
+
+    st.push(10);
+    st.push(20);
+    st.push(30);
+
+    cout << "The top element of stack is " << st.peek() <<endl;
+
+    st.pop();
+
+    cout << "The top element of stack is " << st.peek() <<endl;
+
+    cout << "Is the Stack empty " << st.isEmpty() << endl;
+}
