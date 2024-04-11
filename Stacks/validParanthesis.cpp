@@ -2,33 +2,47 @@
 using namespace std;
 #include<stack>
 
-class Solution {
-public:
-        bool isValid(string s) {
-        int n = s.length();
-        stack<int> st;
-        for (int i = 0; i < n; i++) {
-            if (s[i] == '[' || s[i] == '(' || s[i] == '{') {
-                st.push(s[i]);
-            } else {
-                if (st.empty()) {
-                    return false;
-                } else {
-                    char c = st.top();
-                    st.pop();
-                    if ((s[i] == ')' && c == '(') ||
-                        (s[i] == ']' && c == '[') ||
-                        (s[i] == '}' && c == '{')) {
-                        continue;
-                    } else {
-                        return false;
-                    }
-                }
-            }
+
+bool validParanthesis(string exp){
+    stack<char> s;
+
+    for(int i=0; i<exp.length(); i++){
+
+        char ch = exp[i];
+        if(ch=='('|| ch=='{'||ch=='['){
+            s.push(ch);
         }
-        if (st.empty()) {
-            return true;
+
+        else{ // closing brackets
+            char top = s.top();
+           
+           if(!s.empty()){
+             if(
+                (ch == ')' && top == '(') ||
+                (ch == '}' && top == '{') ||
+                (ch == ']' && top == '[')
+              ){
+                s.pop();
+              }
+              else{
+                return false;
+              }
+           }
+
+           else{
+            return false;
+           }
         }
+    }
+
+    if(s.empty()){
+        return true;
+    }
+    else{
         return false;
     }
-};
+}
+
+int main(){
+
+}
