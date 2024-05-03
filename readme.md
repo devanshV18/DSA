@@ -6,3 +6,4 @@ I have added all the 3 questions solved with their dates.
 
 1st May - rotate String, remove Outer Paranthesis, reverse words in a string
 2nd May - Two Sum, Sort Colors, Best time to buy and sell stocks
+3rd May - Next Permutation, Rotae Image (Rotate an array by 90 deg), Check if array is sorted
