@@ -1,23 +1,27 @@
 #include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 #include<vector>
 
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        int low = 0, mid = 0, high = nums.size()-1;
-        while(mid <= high){
-            if(nums[mid] == 0){
-                swap(nums[low], nums[mid]);
-                low++;
-                mid++;
+        int l = 0;
+        int r = nums.size() - 1;
+        int  i = 0;
+
+        while(i<=r){
+            if(nums[i] == 0){
+                swap(nums[i],nums[l]);
+                l++;
+                i++;
             }
-            else if(nums[mid] == 1){
-                mid++;
+            else if(nums[i] == 2){
+                swap(nums[i],nums[r]);
+                r--;
             }
             else{
-                swap(nums[mid], nums[high]);
-                high--;
+                i++;
             }
         }
     }
