@@ -6,14 +6,22 @@ using namespace std;
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int min_price = prices[0];
-        int maxprof = 0;
+        int l = 0;
+        int r = 1;
 
-        for(int i=1;i<prices.size();i++){
-            maxprof = max(maxprof,prices[i]-min_price);
-            min_price = min(prices[i],min_price);
+        int maxP = 0;
+        int profit;
+
+        while(r<prices.size()){
+            if(prices[l]>prices[r]){
+                l=r;
+            }
+            if(prices[l]<prices[r]){
+                profit = prices[r] - prices[l];
+                maxP = max(maxP, profit);
+            }
+            r++;
+
         }
-
-        return maxprof;
     }
 };
