@@ -10,7 +10,7 @@ I have added all the 3 questions solved with their dates.
 4th May - move Zeroes, rotate Array to right, remove Duplicates
 5th May - delete a node by value in LL , detect a loop in a LL , find middle node a LL
 
-  6th TO 16th May      <--------EXAMS PROJECT WORK ETC------------>
+  6th TO 15th May      <--------EXAMS PROJECT WORK ETC------------>
 
 
-17th May - SubArray Sum Equals K, 4 Sum, Majority Element
+16th May - SubArray Sum Equals K, 4 Sum, Majority Element
