@@ -14,3 +14,4 @@ I have added all the 3 questions solved with their dates.
 
 
 16th May - SubArray Sum Equals K, 4 Sum, Majority Element
+17th May - Maximum SubArray, Spiral Matrix, Find the smallest divisor given a threshold
