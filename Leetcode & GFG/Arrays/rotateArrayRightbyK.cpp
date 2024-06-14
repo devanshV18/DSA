@@ -18,7 +18,19 @@
 
 #include<iostream>
 #include<vector>
+#include<bits/stdc++.h>
 using namespace std;
+
+
+void rotateByKRight(vector<int> &nums, int k){
+    int n = nums.size();
+    k = k % n;
+
+    reverse(nums.begin(),nums.end()); //reverse entire array after normalisation
+    reverse(nums.begin(),nums.begin()+k); //reverse first k
+    reverse(nums.begin()+k,nums.end()); // reverse n-k elements
+
+}
 
 
 
