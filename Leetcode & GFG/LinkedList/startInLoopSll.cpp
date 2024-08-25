@@ -38,7 +38,7 @@ Node* startInLoop(Node* head){
     Node* slow = head;
     Node* fast = head;
 
-    while(fast != NULL && fast->next != NULL){
+    while(fast != NULL && fast->next != NULL){ //while loop terminates if at any point either fast or fast -> next gets null which means the LL has no loop
         slow = slow->next;
         fast = fast->next->next;
 
