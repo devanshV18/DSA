@@ -59,7 +59,7 @@ struct ListNode {
 
     ListNode* delNode = slow->next;
     slow->next = slow->next->next;
-    return head;
+    return head; 
 
     
  }
