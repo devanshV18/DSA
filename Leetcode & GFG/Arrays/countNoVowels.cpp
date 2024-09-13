@@ -20,8 +20,8 @@ bool countVowels(string str){
 int noOfStringWithoutVowels(vector<string> A){
     int count = 0;
     for(int i = 0; i<A.size(); i++){
-        //if string doesn't contain any vowel
-        if((countVowels(A[i])) == true){
+        //if string doesn't contain any vowel -> if(true)
+        if((countVowels(A[i]))){
             count++;
         }
     }
