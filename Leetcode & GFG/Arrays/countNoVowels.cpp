@@ -28,3 +28,9 @@ int noOfStringWithoutVowels(vector<string> A){
 
     return count;
 }
+
+int main() {
+    vector<string> A = {"hello", "sky", "world", "rhythm", "python"};
+    cout << "Number of strings without vowels: " << noOfStringWithoutVowels(A) << endl;
+    return 0;
+}
