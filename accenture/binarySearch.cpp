@@ -5,10 +5,9 @@ using namespace std;
 int binarySearch(vector<int> v, int target){
     int s = 0;
     int e = v.size() - 1;
+    while(s <= e){
+        int mid = s + (e-s) / 2;
 
-    int mid = s + (e-s) / 2;
-
-    while(s < e){
         if(v[mid] == target){
         return mid;
         }
@@ -27,4 +26,6 @@ int main(){
     int target = 10;
     int res = binarySearch(asc,target);
     cout<<res<<endl;
+    
+    return 0;
 }
