@@ -10,7 +10,8 @@ int fibSum(int n){
 }
 
 int main(){
-    int n = 3; 
-    int res = fibSum(3); 
+    int n = 7; 
+    int res = fibSum(n); 
+
     cout << res << endl;
 }
