@@ -17,7 +17,8 @@ string removeDups(string s){
 }
 
 int main(){
-    string chk = "bcabc";
+    string chk;
+    cin >> chk;
     string res = removeDups(chk);
     cout << res << endl;
 }
