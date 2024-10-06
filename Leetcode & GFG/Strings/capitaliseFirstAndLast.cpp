@@ -8,12 +8,12 @@ string captilaiseEnds(string &s){
    
     for(int i = 0; i<s.length(); i++){
         if( i == 0 || i == (s.length() - 1)){
-            s[i] = towupper(s[i]);
+            s[i] = toupper(s[i]);
         } 
         else if (s[i+1] == ' ' || s[i-1] == ' ') // Converting characters present before and after
         {
-            s[i] = towupper(s[i]);
-            s[i] = towupper(s[i]);
+            s[i] = toupper(s[i]);
+            // s[i] = toupper(s[i]);
         }
     }
     cout<<"String after capitalizing the first and last letter of each word of the string:" << "\n";
@@ -22,7 +22,9 @@ string captilaiseEnds(string &s){
 }
 
 int main(){
-    string a = "take u forward is awesome";
+    string a;
+    cout << "ENter your sentence" << endl;
+    getline(cin, a);
     string res = captilaiseEnds(a);
     cout << res << endl;
 }
