@@ -1,38 +1,32 @@
-#include<vector>
 #include<stack>
+#include<vector>
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
 
-//brute force
-vector<int> nextGE(vector<int> v){
+vector<int> nge(vector<int> v){
     int n = v.size();
     vector<int> nge(n,-1);
 
     for( int i = 0; i<n; i++){
-        for( int j = i+1; j<n; j++){
+        for(int j = i; j<n; j++){
             if(v[j] > v[i]){
                 nge[i] = v[j];
                 break;
             }
         }
     }
+
     return nge;
 }
 
-
-
-//optimised approach
-
 vector<int> nextGreaterElement(vector<int> v){
-    int n = v.size();
+    int n= v.size();
     vector<int> nge(n);
     stack<int> s;
 
-    for(int i = n-1; i>= 0; i--){
-
-        //we pop the stock until stack is not empty and st.top < v[i] -> any one gets false we stop popping
-        while(!s.empty() && s.top() <= v[i] ){
+    for(int i = n-1; i>=0; i--){
+        while (!s.empty() && s.top() <= v[i]){
             s.pop();
         }
 
@@ -47,8 +41,8 @@ vector<int> nextGreaterElement(vector<int> v){
     }
 
     return nge;
-}
 
+}
 
 int main(){
     vector<int> inp = {6,0,8,1,3};

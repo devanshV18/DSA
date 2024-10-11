@@ -3,20 +3,53 @@ using namespace std;
 #include<stack>
 #include<vector>
 
-vector<int> nextSmallerElement(vector<int> &arr, int n){
-    stack<int> s;
-    s.push(-1);
-    vector<int> ans(n);
 
-    for(int i = n-1 ; i>=0 ; i--){
-        int curr = arr[i];
+//brute force
+vector<int> nse(vector<int> v){
+    int n = v.size();
+    vector<int> nge(n,-1);
 
-        while(s.top()>curr){
-            s.pop();
+    for( int i = 0; i<n; i++){
+        for(int j = i; j<n; j++){
+            if(v[j] < v[i]){
+                nge[i] = v[j];
+                break;
+            }
         }
-        ans[i] = s.top();
-        s.push(curr);
     }
 
-    return ans;
+    return nge;
+}
+
+
+//optimised
+vector<int> nextSmallerElement(vector<int> v){
+    int n = v.size();
+    vector<int> nse(n);
+    stack<int> s;
+
+    for(int i = n-1; i>=0; i--){
+        while( !s.empty() && s.top() >= v[i] ){
+            s.pop();
+        }
+
+        if(s.empty()){
+            nse[i] = -1;
+        }
+        else{
+            nse[i] = s.top();
+        }
+
+        s.push(v[i]);
+    }
+    return nse;
+} 
+
+int main(){
+    vector<int> inp = {4, 8, 5, 2, 25};
+    vector<int> ans = nextSmallerElement(inp);
+
+    for(int i = 0; i<ans.size(); i++){
+        cout << ans[i] << " ";
+    }
 }
