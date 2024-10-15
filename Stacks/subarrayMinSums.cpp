@@ -5,6 +5,22 @@
 using namespace std;
 // const int MOD = 1e9 + 7;
 
+//BRUTE FORCE
+int subarrayMins(vector<int> v){
+        int sum = 0;
+    // int MOD = 1e9;
+        for(int i = 0; i<v.size(); i++){
+            int mini = v[i];
+            for(int j = i; j<v.size(); j++){
+                mini = min(mini, v[i]);
+                sum = (sum + mini);
+            }
+        }
+        
+        return sum;
+    }
+
+//OPTIMAL APPROACH USING NSE AND PSE
 
 //finding indices of nse for each element.
 vector<int> findNSE(vector<int> arr){
@@ -53,7 +69,7 @@ int subarrayMinSum(vector<int>& arr) {
     }
 
 int main(){
-    vector<int> inp = {11,81,94,43,3};
-    int ans = subarrayMinSum(inp);
+    vector<int> inp = {3,1,2,4};
+    int ans = subarrayMins(inp);
     cout << ans << endl;
 }
