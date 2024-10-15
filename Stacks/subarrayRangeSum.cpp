@@ -19,6 +19,11 @@ int sumSubarrayRanges(vector<int> v){
     return sum;
 }
 
+
+
+//OPTIMAL APPROACH : - 
+// sum of sub array ranges = sum of subarray maximums - sum of subarray minimums.
+
 int main(){
     vector<int> test = {1,4,3,2};
     int ans = sumSubarrayRanges(test);

@@ -6,13 +6,14 @@ using namespace std;
 // const int MOD = 1e9 + 7;
 
 //BRUTE FORCE
+//works well
 int subarrayMins(vector<int> v){
+        int n = v.size();
         int sum = 0;
-    // int MOD = 1e9;
-        for(int i = 0; i<v.size(); i++){
+        for(int i = 0; i<n; i++){
             int mini = v[i];
-            for(int j = i; j<v.size(); j++){
-                mini = min(mini, v[i]);
+            for(int j = i; j<n; j++){
+                mini = min(mini, v[j]);
                 sum = (sum + mini);
             }
         }
@@ -20,42 +21,44 @@ int subarrayMins(vector<int> v){
         return sum;
     }
 
+
+
+
+
 //OPTIMAL APPROACH USING NSE AND PSE
+    //works well
+    vector<int> findNSE(vector<int>& arr) {
+        int n = arr.size();
+        vector<int> nse(n);
+        stack<int> st;
 
-//finding indices of nse for each element.
-vector<int> findNSE(vector<int> arr){
-    int n = arr.size();
-    vector<int> nse(n);
-    stack<int> s;
-
-    for(int i=n-1; i>=0; i--){
-        while( !s.empty() && arr[s.top()] >= arr[i] ){
-            s.pop();
+        for (int i = n - 1; i >= 0; i--) {
+            while (!st.empty() && arr[st.top()] >= arr[i]) {
+                st.pop();
+            }
+            nse[i] = st.empty() ? n : st.top();
+            st.push(i);
         }
-        nse[i] = s.empty() ? n : s.top();
-        s.push(i);
+        return nse;
     }
-    return nse;
-}
 
+    vector<int> findPSEE(vector<int>& arr) {
+        int n = arr.size();
+        vector<int> pse(n);
+        stack<int> st;
 
-//finding pse indices for each element just with a edge case being handled that we check for smaller and equal element
-vector<int> findPSEE(vector<int> arr){
-    int n = arr.size();
-    vector<int> pse(n);
-    stack<int> s;
-
-    for(int i = 0; i<n; i++){
-        while( !s.empty() && arr[s.top()] > arr[i] ){
-            s.pop();
+        for (int i = 0; i < n; i++) {
+            while (!st.empty() && arr[st.top()] > arr[i]) {
+                st.pop();
+            }
+            pse[i] = st.empty() ? -1 : st.top();
+            st.push(i);
         }
-        pse[i] = s.empty() ? -1 : s.top();
+        return pse;
     }
-    return pse;
-}
 
-//finding subarray minsum using the logic
-int subarrayMinSum(vector<int>& arr) {
+
+    int sumSubarrayMins(vector<int>& arr) {
         const int MOD = 1e9 + 7;
         vector<int> nse = findNSE(arr);
         vector<int> psee = findPSEE(arr);
@@ -68,8 +71,9 @@ int subarrayMinSum(vector<int>& arr) {
         return total;
     }
 
-int main(){
-    vector<int> inp = {3,1,2,4};
-    int ans = subarrayMins(inp);
-    cout << ans << endl;
+
+int main() {
+    vector<int> arr = {11,81,94,43,3};
+    cout << "Sum of Subarray Minimums: " << subarrayMins(arr) << endl;
+    return 0;
 }
