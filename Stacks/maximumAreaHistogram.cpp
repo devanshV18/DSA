@@ -12,41 +12,54 @@ using namespace std;
 
 //next smaller element indices -> if found OK and if not found assign n (the size of array)
 vector<int> nextSmallerElement(vector<int>& arr) {
-    int n = arr.size();
-    vector<int> nse(n, n); // Initialize with -1 (no smaller element)
-    stack<int> s;
-    
-    for (int i = 0; i < n; i++) {
-        while (!s.empty() && arr[s.top()] > arr[i]) {
-            nse[s.top()] = i; // Update the index of the next smaller element
-            s.pop();
+        int n = arr.size();
+        vector<int> nse(n);
+        stack<int> st;
+
+        for (int i = n - 1; i >= 0; i--) {
+            while (!st.empty() && arr[st.top()] >= arr[i]) {
+                st.pop();
+            }
+            nse[i] = st.empty() ? n : st.top();
+            st.push(i);
         }
-        s.push(i);
-    }
-
-    return nse;
+        return nse;
 }
-
 
 
 //finding prev smaller element indices -> if found OK , if not found assign -1 
+// vector<int> previousSmallerElement(vector<int>& arr) {
+//     int n = arr.size();
+//     vector<int> pse(n, -1); // Initialize with -1 (no smaller element)
+//     stack<int> s;
+
+//     for (int i = 0; i < n; i++) {
+//         while (!s.empty() && arr[s.top()] >= arr[i]) {
+//             s.pop(); // Pop elements until we find the smaller one
+//         }
+//         if (!s.empty()) {
+//             pse[i] = s.top(); // Update the index of the previous smaller element
+//         }
+//         s.push(i);
+//     }
+
+//     return pse;
+// }
+
 vector<int> previousSmallerElement(vector<int>& arr) {
-    int n = arr.size();
-    vector<int> pse(n, -1); // Initialize with -1 (no smaller element)
-    stack<int> s;
+        int n = arr.size();
+        vector<int> pse(n);
+        stack<int> st;
 
-    for (int i = 0; i < n; i++) {
-        while (!s.empty() && arr[s.top()] >= arr[i]) {
-            s.pop(); // Pop elements until we find the smaller one
+        for (int i = 0; i < n; i++) {
+            while (!st.empty() && arr[st.top()] >= arr[i]) {
+                st.pop();
+            }
+            pse[i] = st.empty() ? -1 : st.top();
+            st.push(i);
         }
-        if (!s.empty()) {
-            pse[i] = s.top(); // Update the index of the previous smaller element
-        }
-        s.push(i);
+        return pse;
     }
-
-    return pse;
-}
 
 
 int maxAreaHistogram(vector<int> v){
@@ -63,7 +76,7 @@ int maxAreaHistogram(vector<int> v){
 }
 
 int main() {
-    vector<int> histogram = {2, 4};
+    vector<int> histogram = {2,1,5,6,2,3};
     cout << "Maximum Rectangle Area in Histogram: " << maxAreaHistogram(histogram) << endl;
     return 0;
 }
