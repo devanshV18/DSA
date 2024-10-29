@@ -59,7 +59,7 @@ int medianBetter(vector<int> a, vector<int> b){
     int el1 = -1;
     int el2 = -1;
     int ind1 = n/2;
-    int ind2 = n/2 - 1;    
+    int ind2 = ind1-1;    
 
 
     while( i < n1 && j < n2 ){
@@ -70,15 +70,17 @@ int medianBetter(vector<int> a, vector<int> b){
             if(cnt == ind2){
                 el2 = a[i];
             }
+            cnt++;
             i++;        
         }
         else{
             if(cnt == ind1){
-                el2 = a[i];
+                el2 = b[j];
             }
             if(cnt == ind2){
                 el2 = b[j];
             }
+            cnt++;
             j++;
         }
     }
@@ -90,6 +92,7 @@ int medianBetter(vector<int> a, vector<int> b){
         if(cnt == ind2){
             el2 = a[i];
         }
+        cnt++;
         i++;
     }
 
@@ -99,15 +102,16 @@ int medianBetter(vector<int> a, vector<int> b){
         }         
         if(cnt == ind2){
             el2 = b[j];
-        } 
+        }
+        cnt++;
         j++;
     }
 
     if(n%2 == 1){
-        return el2;
+        return (double)el2;
     }
 
-   return (double)( (double)(el1 + el2) )/ 2.0;
+   return (double)((double)(el1 + el2)) / 2.0;
 }
 
 int main(){
