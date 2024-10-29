@@ -10,14 +10,13 @@ vector<int> pge(vector<int> v){
     vector<int> pge(n,-1);
 
     for(int i = 0; i<n; i++){
-        for(int j = i-1; j>=0; j--){
+        for(int j = i-1; j>=0 ; j--){
             if(v[j] > v[i]){
                 pge[i] = v[j];
                 break;
             }
         }
     }
-
     return pge;
 }
 
@@ -25,11 +24,12 @@ vector<int> pge(vector<int> v){
 //Optimised Approach
 vector<int> previousGreaterElement(vector<int> v){
     int n = v.size();
-    vector<int> pge(n,-1);
+    vector<int> pge(n);
     stack<int> s;
 
+    //SINCE WE NEED PREVIOUS greater elemnt the loop runs starts from left/start
     for(int i = 0; i<n; i++){
-        while( !s.empty() && s.top() <= v[i] ){
+        while( !s.empty() && s.top() <= v[i]){
             s.pop();
         }
 

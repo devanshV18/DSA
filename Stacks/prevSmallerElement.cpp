@@ -11,7 +11,7 @@ vector<int> pse(vector<int> v){
 
     for(int i = 0; i<n; i++){
         for(int j = i-1; j>=0; j--){
-            if(v[j] < v[i]){
+            if( v[j] < v[i] ){
                 pse[i] = v[j];
                 break;
             }
@@ -25,11 +25,11 @@ vector<int> pse(vector<int> v){
 //Optimised Approach
 vector<int> previousSmallerELement(vector<int> v){
     int n = v.size();
-    vector<int> pse(n,-1);
+    vector<int> pse(n);
     stack<int> s;
 
     for(int i = 0; i<n; i++){
-        while( !s.empty() && s.top() >= v[i] ){
+        while(!s.empty() && s.top() >= v[i]){
             s.pop();
         }
 
@@ -42,6 +42,7 @@ vector<int> previousSmallerELement(vector<int> v){
 
         s.push(v[i]);
     }
+
     return pse;
 }
 
