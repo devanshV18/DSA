@@ -63,20 +63,21 @@ vector<int> previousSmallerElement(vector<int>& arr) {
 
 
 int maxAreaHistogram(vector<int> v){
-    vector<int> nse = nextSmallerElement(v);
-    vector<int> pse = previousSmallerElement(v);
-    int maxArea = 0;
+    vector<int> nseIndex = nextSmallerElement(v);
+    vector<int> pseIndex = previousSmallerElement(v);
+    int n = v.size();
+    int maxArea = INT_MIN;
 
-    for(int i = 0; i<v.size(); i++){
-        int area = ( v[i] * (nse[i] - pse[i] - 1) );
-        maxArea = max(maxArea, area);
+    for(int i = 0; i<n; i++){
+        int currArea = v[i] * (nseIndex[i] - pseIndex[i] -1);
+        maxArea = max(maxArea, currArea);
     }
 
     return maxArea;
 }
 
 int main() {
-    vector<int> histogram = {2,1,5,6,2,3};
+    vector<int> histogram = {2,4};
     cout << "Maximum Rectangle Area in Histogram: " << maxAreaHistogram(histogram) << endl;
     return 0;
 }
