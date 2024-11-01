@@ -4,6 +4,7 @@ using namespace std;
 #include<vector>
 
 int celeb(vector<vector<int>> v){
+    //n is the size of the array or simply the no. of persons. n= 4 means 4 persons and size is 4 i.e. 0,1,2,3.
     int n = v.size();
 
     //since we have a n*n matrix the size of rows and column is ame as n
