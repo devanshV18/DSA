@@ -6,18 +6,17 @@ using namespace std;
 
 //brute force -> ignore
 //works well
-int subArrayMaxSum(vector<int> v){
-    int sum = 0;
+int sumSubarraymax(vector<int> v){
     int n = v.size();
+    int sum = 0;
 
     for(int i = 0; i<n; i++){
         int maxi = v[i];
         for(int j = i; j<n; j++){
             maxi = max(maxi, v[j]);
-            sum = sum + maxi; 
+            sum += maxi;
         }
     }
-
     return sum;
 }
 
@@ -76,6 +75,6 @@ vector<int> findNGE(vector<int> arr) {
 
 int main(){
     vector<int> test = {3,1,2,4};
-    int ans = subArrayMaxSum(test);
+    int ans = sumSubarraymax(test);
     cout << ans << endl;    
 }

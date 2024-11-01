@@ -7,19 +7,20 @@ using namespace std;
 
 //BRUTE FORCE
 //works well
-int subarrayMins(vector<int> v){
-        int n = v.size();
-        int sum = 0;
-        for(int i = 0; i<n; i++){
-            int mini = v[i];
-            for(int j = i; j<n; j++){
-                mini = min(mini, v[j]);
-                sum = (sum + mini);
-            }
+
+    int sumSubarrayMinimums(vector<int> v){
+    int n = v.size();
+    int maxSum = 0;
+    for(int i = 0; i<n; i++){
+        int mini = v[i];
+        for(int j = i; j<n; j++){
+            mini = min(mini, v[j]);
+            maxSum += mini;
         }
-        
-        return sum;
     }
+    return maxSum;
+}
+
 
 
 

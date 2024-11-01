@@ -14,8 +14,8 @@ int sumSubarrayRanges(vector<int> v){
        for(int j = i+1; j<n; j++){
         largest = max(largest, v[j]);
         smallest = min(smallest, v[j]);
-
-        sum = sum + (largest - smallest);
+        int diff = largest -  smallest;
+        sum = sum + diff;
        }
     }
     return sum;
@@ -165,7 +165,7 @@ int sumOfSubArrayRanges(vector<int> v){
 
 int main(){
     vector<int> test = {1,4,3,2};
-    int ans = sumOfSubArrayRanges(test);
+    int ans = sumSubarrayRanges(test);
 
     cout << ans << endl;
 }
