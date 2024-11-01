@@ -23,6 +23,7 @@ int celeb(vector<vector<int>> v){
         }
     }
 
+    //checking both conditions atisfied for ith candidate.
     for(int i = 0; i<n; i++){
         if( knowME[i] == n-1 && iKnow[i] == 0 ){
             return i;
