@@ -56,7 +56,7 @@ vector<vector<int>> threeSumBetter(vector<int> nums){
 
 
 //OPTIMAL APPROACH
-
+//eliominate the usage of set DS as we sort the array and we get all triplets in sorted order.
 vector<vector<int>> threeSumOptimal(vector<int>& nums) {
         int n = nums.size();
         vector<vector<int>> ans;
@@ -64,42 +64,39 @@ vector<vector<int>> threeSumOptimal(vector<int>& nums) {
         sort(nums.begin(), nums.end());
 
         for(int i = 0; i<n; i++){
-            if( i > 0 && nums[i] == nums[i-1] ){
+            if( i>0 && nums[i] == nums[i-1]){
                 continue;
             }
+             int j = i+1;
+             int k = n-1;
 
-            int j = i+1;
-            int k = n-1;
-
-            while( j < k ){
+             while( j < k ){
                 int sum = nums[i] + nums[j] + nums[k];
-                if( sum < 0 ){
+                if( sum < 0){
                     j++;
                 }
-                else if( sum > 0 ){
+                else if( sum > 0){
                     k--;
                 }
                 else{
-                    vector<int> temp = {nums[i],nums[j],nums[k]};
+                    //triplet is  0
+                    vector<int> temp = {nums[i], nums[j], nums[k]};
                     ans.push_back(temp);
                     j++;
                     k--;
-                    while( j < k && nums[j] == nums[j-1] ){
-                        j++;
-                    }
-                    while( j < k && nums[k] == nums[k+1] ){
-                        k--;
-                    }
+                    if( j < k && nums[j] == nums[j-1]) j++;
+                    if( j < k && nums[k] == nums[k+1]) k--;
                 }
-            }
+             }
         }
+
         return ans;
     }
 
 
 int main(){
-    vector<int> v = {0,0,0};
-    vector<vector<int>> ans = threeSumBetter(v);
+    vector<int> v = {-1,0,1,2,-1,-4};
+    vector<vector<int>> ans = threeSumOptimal(v);
 
     //printing a 2d array
 
