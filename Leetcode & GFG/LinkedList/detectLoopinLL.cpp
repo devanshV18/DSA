@@ -7,22 +7,24 @@ using namespace std;
     ListNode(int x) : val(x), next(NULL) {}
  };
 
-class Solution {
-public:
+
     bool hasCycle(ListNode *head) {
-        if(head==NULL || head->next == NULL){
-            return false;
+        if( head == NULL || head->next == NULL ){
+            return false
         }
+
         ListNode* slow = head;
         ListNode* fast = head->next;
 
-        while(slow!=fast){
-            if(fast==NULL || fast->next==NULL){
-                return false;
+        while( fast != NULL || fast->next != NULL ){
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if(slow == fast){
+                return true
             }
-            slow=slow->next;
-            fast=fast->next->next;
         }
-        return true;
+
+        in case fat or fast-> next gets null means no loop
+        return false;
     }
-};

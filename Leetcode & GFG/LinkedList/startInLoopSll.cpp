@@ -19,16 +19,22 @@ struct Node
 
 //BRUTE FORCE
 Node* startInLoop(Node* head){
+    If(head == NULL || head->next == NULL){
+        return NULL;
+    }
+
     Node* temp = head;
-    unordered_map<Node*, int> m;
-    
-    while(temp != NULL){
-        if(m.find(temp) != m.end()){
+    unordered_map<Node*, int> nmap;
+
+    while(temp!=NULL){
+        if(nmap.find(temp) != nmap.end()){
             return temp;
         }
-        m[temp] = 1;
-        temp = temp -> next;
+        nmap[temp] = 1;
+        temp = temp->next;
     }
+
+    //if temp gets null, while loop breaks and it simply means there is no loop hence no start obliviously.
     return NULL;
 }
 
@@ -38,22 +44,36 @@ Node* startInLoop(Node* head){
     Node* slow = head;
     Node* fast = head;
 
-    while(fast != NULL && fast->next != NULL){ //while loop terminates if at any point either fast or fast -> next gets null which means the LL has no loop
+    while ( fast!= NULL && fast->next != NULL ){
         slow = slow->next;
         fast = fast->next->next;
 
-        if(slow == fast){
-                slow = head;
-                while(slow != fast){
-                    slow = slow->next;
-                    fast = fast->next;
-                }
-                return slow;
+        //if loop is present
+        if ( slow == fast ){
+            slow = head;
+            while( slow!=fast ){
+                slow = slow->next;
+                fast = fast->next;
             }
+            return slow;
         }
+    }
 
-        return NULL;
+    //if fast or fast->next gets null it means no loop present
+    return NULL;
+
         
     }
 
    
+// Node* temp = head;
+//     unordered_map<Node*, int> m;
+    
+//     while(temp != NULL){
+//         if(m.find(temp) != m.end()){
+//             return temp;
+//         }
+//         m[temp] = 1;
+//         temp = temp -> next;
+//     }
+//     return NULL;
