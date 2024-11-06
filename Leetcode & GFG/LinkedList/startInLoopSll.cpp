@@ -51,6 +51,7 @@ Node* startInLoop(Node* head){
         //if loop is present
         if ( slow == fast ){
             slow = head;
+            //slow and fast should meet again if the first if is true.
             while( slow!=fast ){
                 slow = slow->next;
                 fast = fast->next;
