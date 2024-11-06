@@ -1,45 +1,60 @@
-//Node is not defiend logic op
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
 
-
-// class Solution{
-//   public:
-//     //Function to insert a node at the beginning of the linked list.
-//     Node *insertAtBegining(Node *head, int x) {
+struct Node
+{
+    int data;
+    Node * next;
+    
+    Node (int x)
+    {
+        data=x;
+        next=nullptr;
+       
+    }
         
-//     Node* newNode = new Node(x);
+};
+
+
+
+    //Function to insert a node at the beginning of the linked list.
+    Node *insertAtBegining(Node *head, int x) {
+        
+    Node* newNode = new Mode(x); //created a new  Node
+
+    if( head == NULL ){
+        return newNode;
+    }
     
-//        if(head == NULL){
-//            //returning the node in case of an emplty LL
-//            return newNode;
-//        }
-       
-       
-//        newNode -> next = head;
-       
-//        //returning the new head of LL incase of insertion at beginning
-//        return newNode;
-//     }
+    //pointing next of the newNode to the head
+    newNode->next = head;
+
+    //returning new head
+    return newNode;
+    }
     
     
-//     //Function to insert a node at the end of the linked list.
-//     Node *insertAtEnd(Node *head, int x)  {
-//        Node* newNode = new Node(x);
+    //Function to insert a node at the end of the linked list.
+    Node *insertAtEnd(Node *head, int x)  {
+       Node* newNode = new Node(x);
+
+       if(head == NULL){
+        return newNode;
+       }
+
+       Node* temp = head;
+
+        //moving temp till it reaches the last node
+       while( temp->next != NULL ){
+        temp = temp->next;
+       }
        
-//        if(head == NULL){
-//            return newNode;
-//        }
-       
-//        else{
-//            Node* temp = head;
-       
-//            while(temp->next!=NULL){
-//                temp=temp->next;
-//            }
-//            temp->next = newNode;
-//            newNode->next = NULL;
-//        }
-       
-//        //returning the head of LL after insertion at end.
-//        return head;
-//     }
-// };
+
+       //once while loop ends we've reached the last node
+       temp->next = newNode;
+
+       newNode->next = NULL;
+
+       return head;
+    }
