@@ -8,8 +8,7 @@ struct Node
     Node(int x) {  data = x;  next = NULL; }
 }; 
 
-class Solution {
-  public:
+
     // Function to count nodes of a linked list.
     bool searchKey(int n, struct Node* head, int key) {
         if(head == NULL){
@@ -24,4 +23,3 @@ class Solution {
             temp = temp->next;
         }
     }
-};

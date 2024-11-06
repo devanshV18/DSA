@@ -8,9 +8,8 @@ struct Node
     Node(int x) {  data = x;  next = NULL; }
 }; 
 
-class Solution
-{
-    public:
+
+
     //Function to count nodes of a linked list.
     int getCount(struct Node* head){
         
@@ -18,9 +17,9 @@ class Solution
             return 0;
         }
     
-        int count = 0;
+        int count = 1;
         Node* temp = head;
-        while(temp!=NULL){
+        while(temp->next!=NULL){
             temp=temp->next;
             count++;
         }
@@ -28,5 +27,5 @@ class Solution
         return count;
     
     }
-};
+
     
