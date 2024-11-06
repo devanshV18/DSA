@@ -21,7 +21,7 @@ struct Node
     //Function to insert a node at the beginning of the linked list.
     Node *insertAtBegining(Node *head, int x) {
         
-    Node* newNode = new Mode(x); //created a new  Node
+    Node* newNode = new Node(x); //created a new  Node
 
     if( head == NULL ){
         return newNode;
@@ -29,9 +29,10 @@ struct Node
     
     //pointing next of the newNode to the head
     newNode->next = head;
+    head = newNode;
 
     //returning new head
-    return newNode;
+    return head;
     }
     
     

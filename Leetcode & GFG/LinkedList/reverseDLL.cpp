@@ -25,10 +25,11 @@ Node* reverseDLL(Node* head){
     Node* last = NULL;
 
     while(current != NULL){
-        last = current -> prev;
-        current -> prev = current -> next;
-        current -> next = last;
-        current = current -> prev;
+        last = current->prev;
+        current->prev = current->next;
+        current->next = last;
+        current = current->prev;
+        
     }
 
     return last -> prev;
