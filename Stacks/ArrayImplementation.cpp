@@ -20,7 +20,7 @@ class Stack{
 
     //PUSH
     void push(int x){
-        if(topIndex >= capacity-1){
+        if(topIndex == capacity-1){
             cout << "The stack is full" << endl;
             return;
         }
