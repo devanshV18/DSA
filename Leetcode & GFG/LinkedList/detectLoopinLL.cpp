@@ -25,6 +25,6 @@ using namespace std;
             }
         }
 
-        in case fat or fast-> next gets null means no loop
+        //in case fat or fast-> next gets null means no loop
         return false;
     }
