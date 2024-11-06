@@ -24,7 +24,7 @@ double median( vector<int> a, vector<int> b ){
             v.push_back(b[j]);
             j++;
         }
-
+    }
         while( i < n1 ){
             v.push_back(a[i]);
             i++;
@@ -36,12 +36,12 @@ double median( vector<int> a, vector<int> b ){
             j++;
         }
 
-        if( n / 2 == 0 ){
+        if( n % 2 == 1 ){//odd
             return (double)(v[n/2]);
         }
 
         return (double)( (double)(v[n/2] + v[n/2-1]) )/ 2.0;
-    }
+    
 }
 
 

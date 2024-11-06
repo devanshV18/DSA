@@ -6,38 +6,46 @@ using namespace std;
 bool balancedUnbalanced(string s){
   stack<char> st;
 
-  for(int i = 0; i<s.length(); i++){
+  for( int i = 0; i<s.length(); i++ ){
 
-    //if i encounter a opening bracket
+    //opening brackets are simply preserved in the stack
     if( s[i] == '(' || s[i] == '{' || s[i] == '['){
       st.push(s[i]);
     }
 
-    //handling entire case for closing bracket inside this else
-    else{
-        //closing bracket is encountered as we are inside else but stack got empty = clearly unbalanced
-        if( st.empty() ){
-          return false;
-        }
+    else{ // else starts handling case of closing bracket.
 
-        //we have encountered a closing bracket and the stack is also not empty.
-        // noe we need to compare current closing bracket with latest opening bracket.
+      //case wher closing bracket is encountered but stack itself has got empty -> which means there is an umatched / unbalanced brackert
+      if( st.empty() ){
+        return false
+      }
 
-        char ch = st.top();
+      //the stack is not empty and we have a closing bracket so lets check the combination
 
-        //if the brackets are of same type that is the brackets match then we pop and move
-        if( (s[i] == ')' && ch == '(') || (s[i] == '}' && ch == '{') || (s[i] == ']' && ch == '[')){
-          st.pop();
-        }
-        else{
-          //if a unmatch case is found -> return false as it will leave an umatched opening bracket at the end.
-          return false;
-        }
+      //getting the top of stack (an oepning bracket to match combinations)
+      char top = st.top();
+
+      //combination matches
+      if( ( exp[i] == ')' && c == '(' ) || ( exp[i] == '}' && c == '{' ) || ( exp[i] == ']' && c == '[' ) ){
+         st.pop();
+      }
+
+      //combiantion doesn't match
+      else{
+        return false;
+      }
+
     }
-  }
 
-  //after loop ends we just make an additional check that the stack is empty after checking all combinations
-  return st.empty();
+    if(st.empty()){
+      return true;
+    }
+    else{
+      return false;
+    }
+
+
+  }
 }
 
 

@@ -63,7 +63,7 @@ vector<int> findNGE(vector<int> arr) {
     for (int i = 0; i < n; i++) {
         // Number of subarrays where arr[i] is the maximum
         int left = i - pge[i]; // Count of subarrays ending to the left
-        int right = nge[i] - i; // Count of subarrays starting to the right
+        int right = nge[i] - i; // Count of subarrays ending to the right
         total = (total + (right * left * 1LL * arr[i]) % MOD) % MOD;
         } // Contribution to the sum
 
