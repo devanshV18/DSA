@@ -12,16 +12,13 @@ struct Node
         
 };
 Node* reverseLL(Node* head){
-    // Node* prev = NULL;
     Node* curr = head;
     Node* prev = nullptr;
 
-    while(curr != nullptr){
+    while(curr != NULL){
         Node* temp = curr->next;
         curr->next = prev;
         prev = curr;
         curr = temp;
     }
-
-    return prev;
 }
