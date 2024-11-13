@@ -21,7 +21,7 @@ bool checkPrime(int num){
 
 void checkInRange(int m, int n){
     for(int i = m; i<=n; i++){
-        if(i<=n && checkPrime(i)){
+        if(checkPrime(i)){
             cout << i << " is a prime Number" << endl;
         }
     }
