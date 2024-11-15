@@ -33,22 +33,26 @@ bool validPalindrome(string s){
 // the while loop runs until l is smaller than r , i.e. at any point if l==r. l>r loop ends. If loop ends successfully, then it means that we didn't encounter any false case, hence entire string is traversed and we return true.
 
 bool isValidPalindrome(string s){
+
     int l = 0;
     int r = s.length() - 1;
 
-    while ( l < r ){
-        while( l < r && !isalnum(s[l])) l++;
-
-        while( l < r && !isalnum(s[r])) r--;
-
-        if( tolower(s[l]) != tolower(s[r]) ) {
-            return false;
+    while( l < r ){
+        while( l < r && !isalnum(s[l])){
+            l++;
         }
 
+        while( l < r && !isalnum(s[r]) ){
+            r--;
+        }
+
+        if(tolower(s[l]) != tolower(s[r])){
+            return false;
+        }
         l++;
         r--;
     }
-    
+
     return true;
 }
 
