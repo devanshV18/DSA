@@ -4,72 +4,67 @@ using namespace std;
 
 class Queue{
     public:
-
+    int *q;
     int capacity;
-    int * q;
-    int start, end;
     int currSize;
-    //CONSTRUCTOR
-    Queue(int size){
-        capacity = size;
-        q = new int[size];
+    int start;
+    int end;
+
+    Queue(int s){
+        capacity = s;
+        q = new int[s];
         start = -1;
         end = -1;
         currSize = 0;
     }
 
-    //DESTRUCTOR
-    ~Queue() {delete[] q;}
-
-    //ENQUEUE
-    void enqueue(int x){
-        if(currSize == capacity){
+    //enqueue or push
+    void enqueue(int val){
+        if( currSize == capacity ){ 
             cout << "Queue is full" << endl;
             return;
         }
-        
-        if(start == -1 && end == -1){
-
-            start= 0;
+        //empty queue condition
+        else if( start == -1 && end == -1){
+            start = 0;
             end = 0;
-            
         }
         else{
-            end = (end + 1) % capacity;
+            end = (end + 1)%capacity;
         }
-            q[end] = x;
-            currSize++;
-        
+        q[end] = val;
+        currSize = currSize + 1;
     }
 
-    //FRONT -> top
+    //dequeue/pop
+
+    void dequeue(){
+        if(currSize == 0){
+            cout << "The queue is empty" << endl;
+            return;
+        }
+        //queue having a single element
+        else if( start == end ){ //can also be checked if start == end
+            start = -1;
+            end = -1;
+        }
+        else{
+            start = (start+1)%capacity;
+        }
+        currSize--;
+    }
+
+    //front
     int front(){
         if(currSize == 0){
-            cout << "Queue is Empty" << endl;
+            cout << "The queue is empty" << endl;
             return -1;
         }
         return q[start];
     }
 
 
-    //DEQUEUE -> pop
-    void dequeue(){
-        if(currSize == 0){
-            cout << "Queue is empty "<< endl;
-            return;
-        }
-        if(start == end){
-            start = -1;
-            end = -1;
-        }
-        else{
-            start = (start+1) % capacity;
-        }
-
-        currSize--;
-    }
-
-    //SIZE
+    //size
     int size(){
         return currSize;
     }

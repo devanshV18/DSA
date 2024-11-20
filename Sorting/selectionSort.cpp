@@ -6,15 +6,15 @@ using namespace std;
 // once inner loop ends, we swap v[minIndex, v[i]], swapping the minimum elememt to the start of the array.
 void selectionSort(vector<int> &v){
     int n = v.size();
-    for(int i = 0; i<n-1; i++){ //i goes till second last elemnt
-        int minIndex = i; //for each new i we call minIndex to be the first element or i.
-        for(int j = i; j<n; j++){ //j goes till last
+
+    for(int i = 0; i<n-1; i++){
+        int minIndex = i;
+        for(int j = i; j<n; j++){
             if(v[j] < v[minIndex]){
                 minIndex = j;
             }
-        }//inner loop
-
-        swap(v[i], v[minIndex]);
+            swap(v[i], v[minIndex]);
+        }
     }
 }
 

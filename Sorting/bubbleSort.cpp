@@ -9,10 +9,11 @@ using namespace std;
 
 void bubbleSort(vector<int> &v){
     int n = v.size();
-    for(int i = n-1; i>=0; i--){ 
-        for(int j = 0; j<=i-1; j++){ //j goes till one place before where i is or j < i
-            if(v[j] > v[j+1]){
-                swap(v[j],v[j+1]);
+
+    for( int i = n-1; i>=0; i-- ){
+        for(int j = 0; j<=i-1; j++){
+            if(v[j] > v[j+1] ){
+                swap(v[j], v[j+1]);
             }
         }
     }
