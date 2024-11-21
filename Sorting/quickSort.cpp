@@ -2,41 +2,73 @@
 #include<iostream>
 using namespace std;
 
-int partition(vector<int> &v, int low, int high){
-    int pivot = v[low];
-    int i = low;
-    int j = high;
+// int partition(vector<int> &v, int low, int high){
+//     int pivot = v[low];
+//     int i = low;
+//     int j = high;
 
-    while( i < j ){
-        while( v[i] <= pivot && i <= high - 1 ){
-            i++;
-        }
+//     while( i < j ){
+//         while( v[i] <= pivot && i <= high - 1 ){
+//             i++;
+//         }
 
-        while ( v[j] > pivot && j >= low + 1 ){
-            j--;
-        }
+//         while ( v[j] > pivot && j >= low + 1 ){
+//             j--;
+//         }
 
-        if( i < j ){
-            swap(v[i], v[j]);
-        }
-    }
+//         if( i < j ){
+//             swap(v[i], v[j]);
+//         }
+//     }
 
-    swap(v[low], v[j]);
+//     swap(v[low], v[j]);
 
-    return j;
-}
+//     return j;
+// }
 
-void qs(vector<int> &v, int low, int high){
-    if( low < high ){
-        int pIndex = partition(v,low,high);
-        qs(v, low, pIndex-1);
-        qs(v, pIndex+1, high);
-    }
-}
+// void qs(vector<int> &v, int low, int high){
+//     if( low < high ){
+//         int pIndex = partition(v,low,high);
+//         qs(v, low, pIndex-1);
+//         qs(v, pIndex+1, high);
+//     }
+// }
+
+// vector<int> quickSort(vector<int> v){
+//     qs(v, 0, v.size()-1);
+//     return v;
+// }
 
 vector<int> quickSort(vector<int> v){
     qs(v, 0, v.size()-1);
     return v;
+}
+
+void qs(vector<int> &v, int low, int high){
+    if( low < high ){
+        int pIndex = partition(v, low, high);
+        qs(v,low,pIndex-1);
+        qs(v,pIndex+1, high);
+    }
+}
+
+int partititon(vector<int> &v, int low, int high){
+    int pivot = v[low];
+    int i = low;
+    int j = high;
+
+    while ( i < j ){
+        while( v[i] <= pivot && i <= high - 1 ){
+            i++;
+        }
+        while ( v[j] > pivot && j >= low + 1 ){
+            j--;
+        }
+        if ( i < j ){
+            swap(v[i],v[j]);
+        }
+    }
+    swap(v[low], v[j]);
 }
 
 int main(){
