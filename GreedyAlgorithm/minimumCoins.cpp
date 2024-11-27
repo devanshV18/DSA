@@ -7,25 +7,23 @@ void minCoins(int V){
     
     vector<int> ans;
 
-    for(int i = deno.size() - 1; i>=0; i--){
-        while(V >= deno[i]){
-            V -= deno[i];
+    for(int i = deno.size() - 1; i>=0 ; i--){
+        while( V >= deno[i] ){
+            V = V - deno[i];
             ans.push_back(deno[i]);
         }
     }
 
     cout << ans.size() << endl;
 
-    cout << "Coins used: ";
-    for (int i = 0; i < ans.size(); i++) {
-        cout << ans[i] << " ";
+    for(int i = 0; i<ans.size(); i++){
+        cout << ans[i] << " " ;
     }
-    cout << endl;
 }
 
 int main(){
 
-    minCoins(49);
+    minCoins(123);
 
     return 0;
 }
