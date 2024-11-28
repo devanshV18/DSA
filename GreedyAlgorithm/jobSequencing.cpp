@@ -61,9 +61,9 @@ pair<int, int> maxProfitScheduling(vector<int>& jobIds, vector<int>& deadlines, 
 
 int main() {
     // Example input
-    vector<int> jobIds = {6, 3, 4, 2, 5, 8, 1, 7};
-    vector<int> deadlines = {2,6,6,5,4,2,4,2};
-    vector<int> profits = {80,70,65,60,25,22,20,10};
+    vector<int> jobIds = {1,2,3,4};
+    vector<int> deadlines = {4,1,1,1};
+    vector<int> profits = {20,10,40,30};
 
     // Function call
     pair<int, int> result = maxProfitScheduling(jobIds, deadlines, profits);
