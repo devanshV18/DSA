@@ -17,9 +17,6 @@ struct Node
 };
 
 Node* removedDuplicates(Node* head){
-     if( head == NULL || head->next == NULL ){
-        return head;
-     }
 
      Node* temp = head;
 
@@ -31,7 +28,7 @@ Node* removedDuplicates(Node* head){
             delete(duplicate);
         }
         temp->next = nextNode;
-        if(nextNode) nextnode->prev = temp;
+        if(nextNode) nextNode->prev = temp;
         temp = temp->next;
      }
 
