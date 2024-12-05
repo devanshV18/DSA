@@ -52,7 +52,10 @@ vector<int> topView(TreeNode* root){
         } 
     }
 
-    for( auto it : m ){
+    vector<pair<int, int>> sorted(m.begin(), m.end()); // the accumulated map elements in line,node->data pair is stored in a vector of pair
+    sort(sorted.begin(), sorted.end()); //sort this vector using lexographic sorting of vector.
+
+    for( auto it : sorted ){
         res.push_back(it.second);
     }
 
