@@ -36,6 +36,7 @@ vector<int> topView(TreeNode* root){
         TreeNode* node = it.first; //destructuring the node
         int line = it.second; //destructuring the line
 
+        //only placing , line,node pair for first occurence of each line.
         if(m.find(line) == m.end()){
             m[line] = node->data;
         }
@@ -67,11 +68,8 @@ int main(){
     root->right = new TreeNode(3);
     root->left->left = new TreeNode(4);
     root->left->right = new TreeNode(5);
-    root->right->left = new TreeNode(6);
+    root->left->right->left = new TreeNode(6);
     root->right->right = new TreeNode(7);
-    root->left->left->left = new TreeNode(8);
-    root->right->left->right = new TreeNode(9);
-
     // Get the top view
     vector<int> topViewResult = topView(root);
 
