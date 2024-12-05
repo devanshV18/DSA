@@ -2,98 +2,119 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class node {
+class TreeNode {
     public:
         int data;
-        node* left;
-        node* right;
+        TreeNode* left;
+        TreeNode* right;
 
-    node(int d) {
+    TreeNode(int d) {
         this -> data = d;
         this -> left = NULL;
         this -> right = NULL;
     }
 };
 
-node* buildTree(node* root) {
-
-    cout << "Enter the data: " << endl;
-    int data;
-    cin >> data;
-    root = new node(data);    
-
-    if(data == -1) {
-        return NULL;
-    }
-
-    cout << "Enter data for inserting in left of " << data << endl;
-    root->left = buildTree(root->left);
-    cout << "Enter data for inserting in right of " << data << endl;
-    root->right = buildTree(root->right);
-    return root;
-
-}
-bool isLeaf(node* node){
-    if(node->left == NULL && node->right ==NULL){
+// Function to check if a TreeNode is leaf or not
+bool isLeaf(TreeNode* root) {
+    if (root -> left == NULL && root -> right == NULL) {
         return true;
-    }
-    return false;
-}
-
-void addLeftBoundary(node* root, vector<int> &res){
-    node* curr = root->left;
-
-    while(curr){
-        if(!isLeaf(curr)) res.push_back(curr->data);
-        if(curr->left) curr = curr->left;
-        else curr = curr->right;
+    } else {
+        return false;
     }
 }
 
-void addRightBoundary(node* root,vector<int> &res){
-    node* curr = root->right;
+// Adding left boundary
+void addLeftBoundary(TreeNode* root, vector<int>& res) {
+    TreeNode* current = root->left;
+    while (current) {
+        if (!isLeaf(current)) {
+            res.push_back(current->data);
+        }
+        if (current->left) {
+            current = current->left;
+        } else {
+            current = current->right;
+        }
+    }
+}
+
+// Adding right boundary
+void addRightBoundary(TreeNode* root, vector<int>& res) {
+    TreeNode* current = root->right;
     vector<int> temp;
-
-    while(curr){
-        if(!isLeaf(curr)) temp.push_back(curr->data);
-        if(curr->right) curr = curr->right;
-        else curr = curr->left;
+    while (current) {
+        if (!isLeaf(current)) {
+            temp.push_back(current->data);
+        }
+        if (current->right) {
+            current = current->right;
+        } else {
+            current = current->left;
+        }
     }
-    for(int i = temp.size()-1 ; i>=0 ; --i){
+
+    // Reversing the right boundary nodes before adding them to result
+    for (int i = temp.size() - 1; i >= 0; i--) {
         res.push_back(temp[i]);
     }
 }
 
-void addLeaves(node* root, vector<int> &res){
-    if(isLeaf(root)){
+// Adding leaf nodes
+void addLeaves(TreeNode* root, vector<int>& res) {
+    if (isLeaf(root)) {
         res.push_back(root->data);
         return;
     }
-    if(root->left) addLeaves(root->left, res);
-    if(root->right) addLeaves(root->right, res);
 
+    if (root->left) {
+        addLeaves(root->left, res);
+    }
+    if (root->right) {
+        addLeaves(root->right, res);
+    }
 }
 
-vector<int> printBoundary(node* root){
+// Main boundary traversal function
+vector<int> boundaryTraversal(TreeNode* root) {
     vector<int> res;
 
-    if(!root) return res;
-    if(!isLeaf(root)) {
-        res.push_back(root->data);
+    if (root == NULL) {
         return res;
-        
     }
 
-    addLeftBoundary(root,res);
-    addLeaves(root,res);
-    addRightBoundary(root,res);
-    return res;
+    res.push_back(root->data);
 
+    addLeftBoundary(root, res);
+    addLeaves(root, res);
+    addRightBoundary(root, res);
+
+    return res;
 }
 
+// Main function
+int main() {
+    // Building a binary tree
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->right->left = new TreeNode(6);
+    root->right->right = new TreeNode(7);
+    root->left->left->left = new TreeNode(8);
+    root->left->left->right = new TreeNode(9);
+    root->right->left->left = new TreeNode(10);
 
+    // Get the boundary traversal
+    vector<int> boundary = boundaryTraversal(root);
 
+    // Print the result
+    cout << "Boundary traversal of the tree: ";
+    for (int i : boundary) {
+        cout << i << " ";
+    }
+    cout << endl;
 
-int main(){
-
+    return 0;
 }
