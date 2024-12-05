@@ -17,19 +17,20 @@ class TreeNode{
 };
 
 
-vector<vector<int>> levelOrderTraversal(TreeNode* root){
-    vector<vector<int>> result; // the vector containing answers or each level of nodes.
-    if( root == NULL ){
+vector<vector<int>> zigzagTraversal(TreeNode* root){
+    vector<vector<int>> result;
+
+    if(root == NULL){
         return result;
     }
 
     queue<TreeNode*> q;
-
-    q.push(root); //initially pushing root to the queue.
+    bool ltr = true;
+    q.push(root);
 
     while(!q.empty()){
         int size = q.size();
-        vector<int> row;
+        vector<int> row(size);
 
         for(int i = 0; i<size; i++){
             TreeNode* node = q.front();
@@ -43,12 +44,14 @@ vector<vector<int>> levelOrderTraversal(TreeNode* root){
                 q.push(node->right);
             }
 
-            row.push_back(node->data);
+            int index = (ltr) ? i : size - i - 1; //deciding the direction of filling our row vector based on ltr flag
+            row[index] = node->data;
         }
 
+        //after we build one level or row = we push that row to result vector and also change the gflag to oppsite sign for next level
+        ltr = !ltr;
         result.push_back(row);
     }
 
     return result;
 }
-
