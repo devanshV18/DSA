@@ -2,28 +2,26 @@
 #include<vector>
 using namespace std;
 
-void minCoins(int V){
-    vector<int> deno = {1,2,5,10,20,50,100,500,1000};
-    
-    vector<int> ans;
+vector<int> minimumCoins(int amount){
+    vector<int> denominations = {1,2,5,10,50,100,500,1000};
 
-    for(int i = deno.size() - 1; i>=0 ; i--){
-        while( V >= deno[i] ){
-            V = V - deno[i];
-            ans.push_back(deno[i]);
-        }
+    vector<int> coins;
+    for(int i = denominations.size()-1; i>=0; i--){
+        while(amount >= denominations[i]){
+            amount -= denominations[i];
+            coins.push_back(denominations[i]);
+        }   
     }
 
-    cout << ans.size() << endl;
-
-    for(int i = 0; i<ans.size(); i++){
-        cout << ans[i] << " " ;
-    }
+    cout << coins.size() << endl;
+    return coins;
 }
 
 int main(){
+    int amt = 87;
+    vector<int> ans = minimumCoins(amt);
 
-    minCoins(123);
-
-    return 0;
+    for(int i = 0; i<ans.size(); i++){
+        cout << ans[i] << " ";
+    }
 }
