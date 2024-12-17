@@ -19,8 +19,21 @@ int averageWaitTimeSFJ(vector<int> &bt){
     return wt/n;
 }
 
+int avgWaitTime(vector<int> j){
+    sort(j.begin(), j.end());
+
+    int t = 0, wt = 0;
+
+    for(int i = 0; i<j.size(); i++){
+        wt = t + wt;
+        t = t + j[i];
+    }
+
+    return wt/j.size();
+}
+
 int main(){
     vector<int> sjf = {4,3,7,1,2};
-    int avg = averageWaitTimeSFJ(sjf);
+    int avg = avgWaitTime(sjf);
     cout << avg << endl;
 }

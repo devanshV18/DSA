@@ -63,9 +63,37 @@ int minCandiesOptimal(vector<int> &childrenRatings) {
     return minCandies;
 }
 
+int minCandiesRequired(vector<int> ratings){
+    int n = ratings.size();
+
+    vector<int> wrtLeft(n,1);
+    vector<int> wrtRight(n,1);
+
+    int minCandies = 0;
+
+    for(int i = 1; i<n; i++){
+        if(ratings[i] > ratings[i-1]){
+            wrtLeft[i] = wrtLeft[i-1] + 1;
+        }
+    }
+
+    
+    for(int j = n-2; j>=0; j--){
+        if(ratings[j] > ratings[j+1]){
+            wrtRight[j] = wrtLeft[j+1] + 1;
+        }
+    }
+
+    for(int i = 0; i<n; i++){
+        minCandies += max(wrtLeft[i], wrtRight[i]);
+    }
+
+    return minCandies;
+}
+
 
 int main(){
     vector<int> ratings = {1, 3, 2, 2, 1};
-    int minimumCandies = minCandiesOptimal(ratings);
+    int minimumCandies = minCandiesRequired(ratings);
     cout << minimumCandies << endl;
 }
