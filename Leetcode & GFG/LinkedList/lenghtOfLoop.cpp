@@ -48,13 +48,13 @@ int lengthOfLoop(Node* head){
 
         //loop found
         if(slow == fast){
-            int count;
-            while(slow != fast){
-                slow = slow->next;
-                fast = fast->next;
+            int count = 0
+            Node* temp = slow->next; //or fast
+            while(temp != slow){
+                temp = temp->next;
                 count++;
             }
-            return count+1;
+            return count+1; //if we start count at 0, if we initialise count at 1 retrun count itself
         }
     }
 
