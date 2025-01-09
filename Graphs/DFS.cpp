@@ -3,7 +3,7 @@
 #include<queue>
 using namespace std;
 
-//o based indexing code
+//0 based indexing code
 
 void(int node, vector<int> adj[], int vis[], vector<int> &dfs){
     vis[node] = 1;
