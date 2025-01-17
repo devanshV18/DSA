@@ -18,24 +18,26 @@ struct Node
 
 Node* reverseList(Node* head) {
         Node* prev = NULL;
-        Node* curr = head;
-        
-        while(curr != NULL){
-            Node* temp = curr->next;
-            curr -> next = prev;
-            prev = curr;
-            curr = temp;
+        Node* temp = head;
 
+        while(temp != null){
+            Node* front = temp->next;
+            temp->next = prev;
+            prev = temp;
+            temp = front;
         }
+
         return prev;
 }
 
 Node* getKThNode(Node* temp, int k){
     k -= 1;
-    while(temp!=NULL && k>0){
+
+    while(temp != NULL && k > 0){
         temp = temp->next;
         k--;
     }
+
     return temp;
 }
 
@@ -44,25 +46,25 @@ Node* newHeadReverseInK(Node* head, int k){
     Node* prevLast = NULL;
 
     while(temp != NULL){
-        Node* KThNode = getKThNode(temp, k);
+        Node* kthNode = getKThNode(temp,k);
 
-        if(KThNode == NULL){
+        if(kthNode == NULL){
             if(prevLast){
                 prevLast->next = temp;
-                break;
             }
+            break;
         }
 
-        Node* nextNode = KThNode->next;
-        KThNode->next = NULL;
+        Node* nextNode = kthNode->next;
+        kthNode->next = NULL;
 
         reverseList(temp);
 
         if(temp == head){
-            head = KThNode;
+            head = kthNode;
         }
         else{
-            prevLast->next = KThNode;
+            prevLast->next = kthNode;
         }
 
         prevLast = temp;
