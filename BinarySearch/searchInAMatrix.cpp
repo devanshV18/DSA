@@ -2,6 +2,8 @@
 using namespace std;
 #include<vector>
 
+//BRUTE FORCE -> Nested for loop[ linear search]
+
 bool binarySearch(vector<int>& arr, int target) {
     int left = 0;
     int right = arr.size() - 1;
@@ -21,6 +23,10 @@ bool binarySearch(vector<int>& arr, int target) {
     return false; // Target not found
 }
 
+
+//OPTIMAL SOLUTION 
+
+//TC = O(N) + O(logN) = O(N) (As good as o(n))
 bool searchInAMatrix(vector<vector<int>> &mat, int target){
     int m = mat.size();
     int n = mat[0].size();
