@@ -76,7 +76,7 @@ pair<int, int> firstAndLastOccurencePlainBS(vector<int> v, int n, int x){
 
     int first = -1, last = -1;
 
-    while(low<high){
+    while(low<=high){
         int mid = low + (high-low)/2;
 
         if(v[mid] == x){
@@ -91,7 +91,10 @@ pair<int, int> firstAndLastOccurencePlainBS(vector<int> v, int n, int x){
         }
     }
 
-    while(low<high){
+    low = 0;
+    high = n-1;
+
+    while(low<=high){
         int mid = low + (high-low)/2;
 
         if(v[mid] == x){
@@ -99,10 +102,10 @@ pair<int, int> firstAndLastOccurencePlainBS(vector<int> v, int n, int x){
             low = mid + 1;
         }
         else if(v[mid] > x){
-            low = mid + 1;
+            high = mid-1;
         }
         else{
-            high = mid - 1;
+            low = mid + 1;
         }
     }
 
